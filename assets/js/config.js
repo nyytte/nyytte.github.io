@@ -90,6 +90,15 @@ window.portfolioConfig = {
         { text: "Showcase swinging", url: "https://streamable.com/lh0388", icon: "🏹" },
         { text: "Showcase bhop", url: "https://streamable.com/unpltw", icon: "🐇" }
       ]
+    },
+    {
+      status: "finished",
+      title: "Fuse System",
+      description: "A high-fidelity character merging system featuring algorithmic DNA inheritance, cinematic reveal sequences, and a reactive UI architecture.",
+      details: "the DNA Fusion System handles complex character merging through custom inheritance algorithms. It features a complete cinematic reveal phase with dynamic camera framing and environmental polish. The UI is built using React-Luau for modularity, Charm for state management, and Ripple for high-performance animations, ensuring an immersive user experience.",
+      links: [
+        { text: "Showcase", url: "https://streamable.com/ryhzxo", icon: "🧬" }
+      ]
     }
   ],
 
