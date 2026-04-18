@@ -81,37 +81,124 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Fetch from Lanyard REST API (Requires you to be in the Lanyard Discord server)
-    fetch(`https://api.lanyard.rest/v1/users/${userId}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.data && data.data.discord_user) {
-          const user = data.data.discord_user;
-          const status = data.data.discord_status || 'offline';
+    // Update discord status UI
+    function updateDiscordStatus(data) {
+      if (!data || !data.discord_user) return;
+      const user = data.discord_user;
+      const status = data.discord_status || 'offline';
 
-          // Set avatar
-          if (discordAvatar && user.avatar) {
-            const ext = user.avatar.startsWith('a_') ? 'gif' : 'png';
-            discordAvatar.src = `https://cdn.discordapp.com/avatars/${userId}/${user.avatar}.${ext}?size=128`;
+      // Set avatar
+      if (discordAvatar && user.avatar) {
+        const ext = user.avatar.startsWith('a_') ? 'gif' : 'png';
+        discordAvatar.src = `https://cdn.discordapp.com/avatars/${userId}/${user.avatar}.${ext}?size=128`;
+      }
+
+      // Set Status
+      const statusDot = document.getElementById('discord-status-dot');
+      const statusText = document.getElementById('discord-status-text');
+
+      if (statusDot) {
+        statusDot.className = `discord-status-dot ${status}`;
+        statusDot.style.display = 'block';
+      }
+
+      if (statusText) {
+        let displayText = status.charAt(0).toUpperCase() + status.slice(1);
+        if (status === 'dnd') displayText = 'Do Not Disturb';
+        statusText.textContent = `Currently ${displayText}`;
+      }
+
+      // Set Spotify
+      const spotifyEl = document.getElementById('spotify-status-container');
+      const spotifySong = document.getElementById('spotify-song');
+      const spotifyArtist = document.getElementById('spotify-artist');
+      const spotifyArt = document.getElementById('spotify-album-art');
+      const spotifyLink = document.getElementById('spotify-link');
+      const spotifyTimeCurrent = document.getElementById('spotify-time-current');
+      const spotifyTimeTotal = document.getElementById('spotify-time-total');
+      const spotifyProgressFill = document.getElementById('spotify-progress-fill');
+      const spotifyBgBlur = document.getElementById('spotify-bg-blur');
+      
+      if (window.spotifyInterval) clearInterval(window.spotifyInterval);
+
+      if (spotifyEl && data.spotify) {
+        const spotify = data.spotify;
+        spotifySong.textContent = spotify.song;
+        spotifyArtist.textContent = spotify.artist;
+        if (spotifyArt) spotifyArt.src = spotify.album_art_url;
+        if (spotifyBgBlur) spotifyBgBlur.style.backgroundImage = `url(${spotify.album_art_url})`;
+        if (spotifyLink && spotify.track_id) spotifyLink.href = `https://open.spotify.com/track/${spotify.track_id}`;
+        spotifyEl.style.display = 'flex';
+
+        if (spotify.timestamps) {
+          const start = spotify.timestamps.start;
+          const end = spotify.timestamps.end;
+          const totalMs = end - start;
+          
+          const formatTime = (ms) => {
+            const totalSeconds = Math.floor(ms / 1000);
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
+            return `${m}:${s.toString().padStart(2, '0')}`;
+          };
+
+          if (spotifyTimeTotal) spotifyTimeTotal.textContent = formatTime(totalMs);
+
+          function updateProgress() {
+            const now = Date.now();
+            let currentMs = now - start;
+            if (currentMs > totalMs) currentMs = totalMs;
+            if (currentMs < 0) currentMs = 0;
+
+            if (spotifyTimeCurrent) spotifyTimeCurrent.textContent = formatTime(currentMs);
+            const percent = (currentMs / totalMs) * 100;
+            if (spotifyProgressFill) spotifyProgressFill.style.width = `${percent}%`;
+
+            if (currentMs >= totalMs) {
+              clearInterval(window.spotifyInterval);
+            }
           }
 
-          // Set Status
-          const statusDot = document.getElementById('discord-status-dot');
-          const statusText = document.getElementById('discord-status-text');
+          updateProgress();
+          window.spotifyInterval = setInterval(updateProgress, 1000);
+        }
 
-          if (statusDot) {
-            statusDot.className = `discord-status-dot ${status}`;
-            statusDot.style.display = 'block';
-          }
+      } else if (spotifyEl) {
+        spotifyEl.style.display = 'none';
+      }
+    }
 
-          if (statusText) {
-            let displayText = status.charAt(0).toUpperCase() + status.slice(1);
-            if (status === 'dnd') displayText = 'Do Not Disturb';
-            statusText.textContent = `Currently ${displayText}`;
+    // Connect to Lanyard WebSocket for real-time updates
+    function connectLanyard() {
+      const ws = new WebSocket('wss://api.lanyard.rest/socket');
+      let heartbeatInterval;
+
+      ws.onmessage = (event) => {
+        const msg = JSON.parse(event.data);
+
+        if (msg.op === 1) { // Hello
+          ws.send(JSON.stringify({
+            op: 2,
+            d: { subscribe_to_id: userId }
+          }));
+
+          heartbeatInterval = setInterval(() => {
+            ws.send(JSON.stringify({ op: 3 }));
+          }, msg.d.heartbeat_interval);
+        } else if (msg.op === 0) { // Event
+          if (msg.t === 'INIT_STATE' || msg.t === 'PRESENCE_UPDATE') {
+            updateDiscordStatus(msg.d);
           }
         }
-      })
-      .catch(err => console.warn('[Portfolio] Lanyard API fetch failed.', err));
+      };
+
+      ws.onclose = () => {
+        if (heartbeatInterval) clearInterval(heartbeatInterval);
+        setTimeout(connectLanyard, 5000); // Reconnect after 5s
+      };
+    }
+
+    connectLanyard();
   }
 
   // --- 2. Skills Section ---
