@@ -30,49 +30,49 @@ window.portfolioConfig = {
   // Skills
   skills: [
     {
-      icon: "🌙",
+      icon: "assets/img/skills/luau.svg",
       name: "Luau",
       description: "Comfortable building complex systems with metatables and type-safe patterns, keeping code clean and easy to work with.",
       mastery: 95
     },
     {
-      icon: "🚀",
+      icon: "assets/img/skills/performance.svg",
       name: "Performance",
       description: "Keeping gameplay smooth with optimized client visuals, efficient server logic, and systems that scale well without losing performance.",
       mastery: 99
     },
     {
-      icon: "🧩",
+      icon: "assets/img/skills/architecture.svg",
       name: "Scalable Architecture",
       description: "Modular, reusable systems designed for multi-project use, with flexible controllers, services, and configurations.",
       mastery: 95
     },
     {
-      icon: "🔧",
+      icon: "assets/img/skills/tools.svg",
       name: "Rojo, Git, Wally",
       description: "Well structured external workflow with Rojo, Wally, and Git, focused on clean organization and scalability.",
       mastery: 93
     },
     {
-      icon: "⚛️",
+      icon: "assets/img/skills/react.svg",
       name: "React-Luau & Charm",
       description: "Declarative UI with React-Luau, Charm for state management, and Ripple for smooth animations.",
       mastery: 85
     },
     {
-      icon: "🔁",
+      icon: "assets/img/skills/networking.svg",
       name: "Networking",
       description: "Advanced use of Networker wrapper for secure client-server communication, server validation, and reliable remote calls",
       mastery: 95
     },
     {
-      icon: "💾",
+      icon: "assets/img/skills/data.svg",
       name: "Player Data Systems",
       description: "Player data handled with ProfileStore, session locking, reliable save/load patterns, and custom utility functions",
       mastery: 94
     },
     {
-      icon: "⚙️",
+      icon: "assets/img/skills/combat.svg",
       name: "Physics & Combat",
       description: "High-performance combat and physics: hitboxes, raycasting, server authoritative logic, and custom systems",
       mastery: 95
@@ -174,23 +174,30 @@ window.portfolioConfig = {
     // }
     {
       name: "mashdee",
-      avatarUrl: "https://cdn.discordapp.com/avatars/934568920285847552/f1fd5e2a1fa7ec0fe11b71b4e96c2d97.png?size=512",                    // TODO: Fill in their avatar URL
+      avatarUrl: "https://cdn.discordapp.com/avatars/934568920285847552/f1fd5e2a1fa7ec0fe11b71b4e96c2d97.png?size=512",
       role: "Game Owner",
       text: "I spent a lot of time working with Nyte and he is always great with communication and delivers really good code.",
       rating: 5
     },
     {
       name: "pumpkinjajaja",
-      avatarUrl: "https://cdn.discordapp.com/avatars/741374651288256583/2d28c2cd87403780644eab30afc0eeed.png?size=512",                    // TODO: Fill in their avatar URL
+      avatarUrl: "https://cdn.discordapp.com/avatars/741374651288256583/2d28c2cd87403780644eab30afc0eeed.png?size=512",
       role: "Developer",
       text: "Fast working, super active and open for feedback and improvements, also really nice!",
       rating: 5
     },
     {
       name: "that1kull",
-      avatarUrl: "https://cdn.discordapp.com/avatars/1110691943559737444/0e5d69bb7720602efd97893065feb84f.png?size=512",                    // TODO: Fill in their avatar URL
+      avatarUrl: "https://cdn.discordapp.com/avatars/1110691943559737444/0e5d69bb7720602efd97893065feb84f.png?size=512",
       role: "Developer",
       text: "Quick to get things done, open to ideas, and really easy to work with.",
+      rating: 5
+    },
+    {
+      name: "Nemery",
+      avatarUrl: "https://cdn.discordapp.com/avatars/320931449056526337/f8abd01d8567032f35aae62d698e27c6.png?size=512",
+      role: "Developer",
+      text: "Very patient and extremely fast at scripting. He gives very frequent communication and gives consistent progress updates when he finishes a task. He offers reasonable prices and produces high-quality work.",
       rating: 5
     },
   ],

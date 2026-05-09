@@ -207,8 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
     config.skills.forEach(skill => {
       const cell = document.createElement('div');
       cell.className = 'skill-cell';
+      // Support both image paths and emoji fallback
+      const iconHTML = skill.icon.includes('/')
+        ? `<img src="${skill.icon}" alt="${skill.name}" class="skill-icon-img">`
+        : skill.icon;
       cell.innerHTML = `
-        <div class="skill-icon">${skill.icon}</div>
+        <div class="skill-icon">${iconHTML}</div>
         <div class="skill-name">${skill.name}</div>
         <div class="skill-desc">${skill.description}</div>
         <div class="skill-bar"><div class="skill-bar-fill" data-width="${skill.mastery}"></div></div>

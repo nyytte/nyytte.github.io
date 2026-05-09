@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- Wrench -->
+  <path d="M38 90 L72 56 C68 44 72 30 84 22 C78 30 78 42 86 50 C94 50 100 44 104 38 C98 52 86 58 74 52 L40 86 Z" stroke="url(#tg)" stroke-width="5" stroke-linejoin="round" fill="none"/>
+  <!-- Gear -->
+  <circle cx="40" cy="88" r="10" stroke="url(#tg)" stroke-width="5" fill="none"/>
+  <!-- Git branch dots -->
+  <circle cx="22" cy="28" r="5" fill="url(#tg)" opacity="0.7"/>
+  <circle cx="22" cy="48" r="5" fill="url(#tg)" opacity="0.7"/>
+  <circle cx="38" cy="38" r="5" fill="url(#tg)" opacity="0.7"/>
+  <line x1="22" y1="33" x2="22" y2="43" stroke="url(#tg)" stroke-width="3" opacity="0.7"/>
+  <path d="M22 33 Q22 38 38 38" stroke="url(#tg)" stroke-width="3" fill="none" opacity="0.7"/>
+</svg>
