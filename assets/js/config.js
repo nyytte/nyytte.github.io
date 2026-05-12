@@ -99,7 +99,9 @@ window.portfolioConfig = {
       links: [
         { text: "Showcase", url: "https://streamable.com/ryhzxo", icon: "🧬" }
       ]
-    }
+    },
+
+
   ],
 
   // Projects
@@ -141,6 +143,15 @@ window.portfolioConfig = {
       details: "A deterministic RNG system where the server controls every roll while the client predicts the result for instant visual feedback. Each case has its own luck tracking, so players can’t manipulate odds between different cases. DataStore persistence is used to prevent exploits like seed farming (rerolling by rejoining). Designed to be highly scalable and easy to customize for different case types and drop systems. Includes a React-based UI with custom rarity effects and smooth animations. Currently my short-term own personal project.",
       links: [
         { text: "Showcase", url: "https://streamable.com/k9nxwm", icon: "🎲" }
+      ]
+    },
+    {
+      status: "wip",
+      title: "A quiet place.",
+      description: "Infinite procedural generation terrain world powered by Parallel Luau and wedge based geometry",
+      details: "In this game, you can explore an endless landscape generated entirely in real time. You can traverse diverse biomes through a world built completely on triangular procedural generation, no 3D models were used in its creation it is pure code. As you travel, the world seamlessly constructs itself ahead of you, offering a inmersive journey where there are no boundaries and the horizon never ends. This project focuses on the aesthetic beauty of procedural systems and the serenity of discovery.",
+      links: [
+        { text: "Showcase", url: "https://streamable.com/d0oyym", icon: "🌍" }
       ]
     },
     {
