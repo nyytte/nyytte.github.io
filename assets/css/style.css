@@ -522,9 +522,30 @@ section {
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
+.skill-icon-svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--text);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+body.light-theme .skill-icon-svg {
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.1));
+}
+
 .skill-cell:hover .skill-icon-img {
   filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5));
   transform: scale(1.1);
+}
+
+.skill-cell:hover .skill-icon-svg {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+  transform: scale(1.1);
+}
+
+body.light-theme .skill-cell:hover .skill-icon-svg {
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.2));
 }
 
 .skill-name {

@@ -30,49 +30,49 @@ window.portfolioConfig = {
   // Skills
   skills: [
     {
-      icon: "assets/img/skills/luau.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
       name: "Luau",
       description: "Comfortable building complex systems with metatables and type-safe patterns, keeping code clean and easy to work with.",
       mastery: 95
     },
     {
-      icon: "assets/img/skills/performance.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
       name: "Performance",
       description: "Keeping gameplay smooth with optimized client visuals, efficient server logic, and systems that scale well without losing performance.",
       mastery: 99
     },
     {
-      icon: "assets/img/skills/architecture.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>`,
       name: "Scalable Architecture",
       description: "Modular, reusable systems designed for multi-project use, with flexible controllers, services, and configurations.",
       mastery: 95
     },
     {
-      icon: "assets/img/skills/tools.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>`,
       name: "Rojo, Git, Wally",
       description: "Well structured external workflow with Rojo, Wally, and Git, focused on clean organization and scalability.",
       mastery: 93
     },
     {
-      icon: "assets/img/skills/react.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"></path><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"></path></svg>`,
       name: "React-Luau & Charm",
       description: "Declarative UI with React-Luau, Charm for state management, and Ripple for smooth animations.",
       mastery: 85
     },
     {
-      icon: "assets/img/skills/networking.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><line x1="12" y1="12" x2="12" y2="8"></line></svg>`,
       name: "Networking",
       description: "Advanced use of Networker wrapper for secure client-server communication, server validation, and reliable remote calls",
       mastery: 95
     },
     {
-      icon: "assets/img/skills/data.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
       name: "Player Data Systems",
       description: "Player data handled with ProfileStore, session locking, reliable save/load patterns, and custom utility functions",
       mastery: 94
     },
     {
-      icon: "assets/img/skills/combat.svg",
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"></polyline><line x1="13" y1="19" x2="19" y2="13"></line><line x1="16" y1="16" x2="20" y2="20"></line><line x1="19" y1="21" x2="21" y2="19"></line></svg>`,
       name: "Physics & Combat",
       description: "High-performance combat and physics: hitboxes, raycasting, server authoritative logic, and custom systems",
       mastery: 95
@@ -142,7 +142,7 @@ window.portfolioConfig = {
       description: "Server-authoritative unboxing with client prediction and anti-exploit safeguards.",
       details: "A deterministic RNG system where the server controls every roll while the client predicts the result for instant visual feedback. Each case has its own luck tracking, so players can’t manipulate odds between different cases. DataStore persistence is used to prevent exploits like seed farming (rerolling by rejoining). Designed to be highly scalable and easy to customize for different case types and drop systems. Includes a React-based UI with custom rarity effects and smooth animations. Currently my short-term own personal project.",
       links: [
-        { text: "Showcase", url: "https://streamable.com/k9nxwm", icon: "🎲" }
+        { text: "Showcase", url: "https://streamable.com/va8qt1", icon: "🎲" }
       ]
     },
     {

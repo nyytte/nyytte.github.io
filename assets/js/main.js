@@ -207,10 +207,17 @@ document.addEventListener('DOMContentLoaded', () => {
     config.skills.forEach(skill => {
       const cell = document.createElement('div');
       cell.className = 'skill-cell';
-      // Support both image paths and emoji fallback
-      const iconHTML = skill.icon.includes('/')
-        ? `<img src="${skill.icon}" alt="${skill.name}" class="skill-icon-img">`
-        : skill.icon;
+      
+      // Support both image paths, inline svgs, and emoji fallback
+      let iconHTML = skill.icon;
+      if (typeof skill.icon === 'string') {
+        if (skill.icon.trim().startsWith('<svg')) {
+          iconHTML = skill.icon.replace('<svg', '<svg class="skill-icon-svg"');
+        } else if (skill.icon.includes('/')) {
+          iconHTML = `<img src="${skill.icon}" alt="${skill.name}" class="skill-icon-img">`;
+        }
+      }
+
       cell.innerHTML = `
         <div class="skill-icon">${iconHTML}</div>
         <div class="skill-name">${skill.name}</div>
