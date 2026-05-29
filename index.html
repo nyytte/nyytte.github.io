@@ -6,14 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nyte portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4" />
+  <link rel="stylesheet" href="assets/css/style.css?v=42" />
   <link rel="icon" href="assets/img/icon.png" type="image/png" />
 </head>
 
 <body>
+
+  <!-- decorative underwater layers (purely cosmetic) -->
+  <!-- water-refraction filter: animated turbulence displaces the light layers
+       so they waver like looking through moving water -->
+  <svg class="ocean-filter" aria-hidden="true" width="0" height="0">
+    <filter id="water-warp" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009 0.013" numOctaves="2" seed="4" result="noise">
+        <animate attributeName="baseFrequency" dur="22s"
+          values="0.009 0.013; 0.013 0.010; 0.008 0.014; 0.009 0.013" repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="22"
+        xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+  <div class="ocean-surface" aria-hidden="true"></div>
+  <div class="ocean-caustics" aria-hidden="true"></div>
+  <div class="ocean-motes" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="ocean-bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
 
   <nav class="fade-in-down">
     <a href="#" class="nav-logo"><span>~/</span><span class="name">nyte</span></a>
@@ -41,30 +68,70 @@
   </nav>
 
   <div class="hero">
-    <p class="hero-eyebrow fade-in-up delay-1">Roblox Scripter & Developer</p>
-    <h1 class="fade-in-up delay-2">
-      <div class="name">Nyte</div>
-      <div class="role">Lua &amp;</div>
-      <div class="accent">Systems.</div>
-    </h1>
-    <p class="hero-desc fade-in-up delay-3"></p>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="hero-eyebrow fade-in-up delay-1"><span class="eyebrow-dot"></span>Roblox Scripter &amp; Developer</p>
+        <h1 class="fade-in-up delay-2">
+          <div class="name">Nyte</div>
+          <div class="role">Lua &amp;</div>
+          <div class="accent">Systems.</div>
+        </h1>
 
-    <div class="hero-actions fade-in-up delay-4">
-      <a href="#projects" class="btn btn-primary">View my work</a>
-      <a href="#contact" class="btn btn-discord">💬 Discord: <span class="discord-handle">_nyte._</span></a>
-    </div>
-    <div class="hero-stats fade-in-up delay-5">
-      <div>
-        <div class="hstat-num years">3<span>+</span></div>
-        <div class="hstat-label">Years scripting</div>
+        <p class="hero-typed fade-in-up delay-3">
+          <span class="hero-typed-prompt">&gt;</span>
+          <span class="hero-typed-label">scripting</span>
+          <span class="hero-typed-text" id="hero-typed"></span><span class="hero-caret"></span>
+        </p>
+
+        <div class="hero-actions fade-in-up delay-4">
+          <a href="#projects" class="btn btn-primary">View my work</a>
+          <a href="#contact" class="btn btn-ghost">Contact me</a>
+        </div>
+        <div class="hero-stats fade-in-up delay-5">
+          <div>
+            <div class="hstat-num years">3<span>+</span></div>
+            <div class="hstat-label">Years scripting</div>
+          </div>
+          <div>
+            <div class="hstat-num projects">2<span>+</span></div>
+            <div class="hstat-label">Games developed</div>
+          </div>
+          <div>
+            <div class="hstat-num bugs">∞</div>
+            <div class="hstat-label">Bugs fixed</div>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="hstat-num projects">2<span>+</span></div>
-        <div class="hstat-label">Games developed</div>
-      </div>
-      <div>
-        <div class="hstat-num bugs">∞</div>
-        <div class="hstat-label">Bugs fixed</div>
+
+      <div class="hero-right fade-in-up delay-3">
+        <div class="profile-card">
+          <div class="profile-top">
+            <div class="profile-avatar"><span class="profile-avatar-fallback">N</span><img id="profile-avatar-img" class="profile-avatar-img" alt="Nyte" /></div>
+            <div class="profile-id">
+              <span class="profile-name">Nyte</span>
+              <span class="profile-handle discord-handle">_nyte._</span>
+            </div>
+            <span class="profile-badge"><span class="status-dot"></span><span class="profile-badge-text">Open to work</span></span>
+          </div>
+          <div class="profile-rows">
+            <div class="profile-row">
+              <span class="profile-key">Location</span>
+              <span class="profile-val info-val-country">Spain</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-key">Experience</span>
+              <span class="profile-val info-val-exp">3+ years</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-key">Stack</span>
+              <span class="profile-val info-val-stack">Luau · Roblox</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-key">Specialty</span>
+              <span class="profile-val info-val-specialty">Systems &amp; OOP</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -77,28 +144,16 @@
     <div class="about-layout">
       <div class="about-text" id="about-text-container">
       </div>
-      <div class="about-card">
-        <div class="about-card-title">// quick info</div>
-        <div class="about-info-row">
-          <span class="about-info-key">Name</span>
-          <span class="about-info-val info-val-handle">Nyte</span>
+      <div class="about-code hero-code">
+        <div class="hero-code-head">
+          <div class="code-dots">
+            <span class="code-dot"></span>
+            <span class="code-dot"></span>
+            <span class="code-dot"></span>
+          </div>
+          <span class="hero-code-file">nyte.luau</span>
         </div>
-        <div class="about-info-row">
-          <span class="about-info-key">Discord</span>
-          <span class="about-info-val discord-handle" style="color:var(--text);">_nyte._</span>
-        </div>
-        <div class="about-info-row">
-          <span class="about-info-key">Stack</span>
-          <span class="about-info-val info-val-stack">Luau</span>
-        </div>
-        <div class="about-info-row">
-          <span class="about-info-key">Specialty</span>
-          <span class="about-info-val info-val-specialty">Systems &amp; OOP</span>
-        </div>
-        <div class="about-info-row">
-          <span class="about-info-key">Status</span>
-          <span class="about-info-val info-val-status"><span class="status-dot"></span>Available</span>
-        </div>
+        <pre><code id="about-code-body">-- loading…</code></pre>
       </div>
     </div>
   </section>
@@ -106,9 +161,11 @@
   <hr class="divider" />
 
   <section id="skills" class="reveal">
-    <p class="sec-label">expertise</p>
-    <h2 class="sec-title">What I work with</h2>
-    <p class="sec-sub">Focused on Roblox engine and the full Luau ecosystem.</p>
+    <div class="sec-head sec-head-center">
+      <p class="sec-label">expertise</p>
+      <h2 class="sec-title">What I work with</h2>
+      <p class="sec-sub">Focused on Roblox engine and the full Luau ecosystem.</p>
+    </div>
     <div id="skills-container" class="skills-grid"></div>
   </section>
 
@@ -118,7 +175,7 @@
     <p class="sec-label">work</p>
     <h2 class="sec-title">Projects</h2>
     <p class="sec-sub">Real systems and tools I've built.</p>
-    <div id="projects-container" class="projects-list"></div>
+    <div id="projects-container" class="work-grid"></div>
   </section>
 
   <hr class="divider" />
@@ -127,16 +184,18 @@
     <p class="sec-label">commissions</p>
     <h2 class="sec-title">Commissions</h2>
     <p class="sec-sub">Commissioned systems and scripts I've created for clients.</p>
-    <div id="commissions-container" class="commissions-list"></div>
+    <div id="commissions-container" class="work-grid"></div>
   </section>
 
   <hr class="divider" />
 
   <!-- Feedback Section -->
   <section id="feedback" class="reveal">
-    <p class="sec-label">feedback</p>
-    <h2 class="sec-title">What clients say</h2>
-    <p class="sec-sub">Reviews from people I've worked with.</p>
+    <div class="sec-head sec-head-center">
+      <p class="sec-label">feedback</p>
+      <h2 class="sec-title">What clients say</h2>
+      <p class="sec-sub">Reviews from people I've worked with.</p>
+    </div>
     <div id="feedback-container" class="feedback-grid"></div>
     <p id="feedback-empty" class="feedback-placeholder" style="display:none;">
       No feedback yet — be the first to work with me!
@@ -203,7 +262,7 @@
         <a href="#" id="discord-message-btn-social" class="social-card">
           <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
             <path
-              d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
+              d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
           </svg>
           <span class="social-name">Discord</span>
           <span class="social-handle discord-handle">_nyte._</span>
@@ -235,27 +294,20 @@
 
   <!-- Project Modal -->
   <div id="project-modal" class="modal-backdrop">
-    <div class="modal-content">
-      <button id="modal-close" class="modal-close">&times;</button>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
       <div class="modal-header">
         <div id="modal-tags" class="project-tags"></div>
         <h3 id="modal-title" class="modal-title"></h3>
-      </div>
-      <div class="modal-body">
         <p id="modal-desc" class="modal-desc"></p>
-        <div id="modal-details" class="modal-details"></div>
       </div>
-      <div id="modal-embeds" class="modal-embeds"></div>
-      <div id="modal-footer" class="modal-footer"></div>
+      <div id="modal-sections" class="modal-sections"></div>
     </div>
   </div>
 
   <div id="toast" class="toast"></div>
 
-  <script src="assets/js/config.js?v=7"></script>
-  <script src="assets/js/main.js?v=7"></script>
-  <div class="wave-front"></div>
-  <div class="bg-glow"></div>
+  <script type="module" src="assets/js/main.js?v=28"></script>
 </body>
 
 </html>
