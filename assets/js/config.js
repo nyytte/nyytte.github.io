@@ -198,18 +198,6 @@ return Nyte`
         { text: "Showcase", url: "https://streamable.com/d0oyym", icon: "🌍" }
       ]
     },
-    {
-      tags: [
-        { name: "Available", class: "tag-sys" },
-        { name: "Commissions Open", class: "tag-lua" }
-      ],
-      title: "Your Project Here",
-      description: "I'm currently taking on new commissions. Let's build your next game core systems together!",
-      details: "I'm currently available for short-term commissions. If your project needs robust, scalable Luau code, feel free to reach out and discuss what you'd like built!",
-      links: [
-        { text: "Contact Me", url: "#contact", icon: "💬" }
-      ]
-    }
   ],
 
   // UI Settings
