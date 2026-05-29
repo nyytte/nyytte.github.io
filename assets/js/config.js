@@ -8,7 +8,7 @@ export const config = {
     roleHighlight: "",
     description: "I build clean, fast Roblox systems, from combat and frameworks to datastores and UI, made to scale and last.",
     yearsScripting: "3+",
-    gamesDeveloped: "2+",
+    gamesDeveloped: "10+",
     bugsFixed: "∞",
     discordUsername: "_nyte._",
     discordUserId: "1403162458134155356",

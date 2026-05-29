@@ -2283,8 +2283,8 @@ footer a:hover {
 
 .feedback-card {
   position: relative;
-  flex: 0 0 380px;
-  height: 320px;
+  flex: 0 0 420px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   background: var(--glass-bg);
