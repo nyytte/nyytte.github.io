@@ -195,7 +195,7 @@ return Nyte`
       description: "Infinite procedural generation terrain world powered by Parallel Luau and wedge based geometry",
       details: "In this game, you can explore an endless landscape generated entirely in real time. You can traverse diverse biomes through a world built completely on triangular procedural generation, no 3D models were used in its creation it is pure code. As you travel, the world seamlessly constructs itself ahead of you, offering a inmersive journey where there are no boundaries and the horizon never ends. This project focuses on the aesthetic beauty of procedural systems and the serenity of discovery.",
       links: [
-        { text: "Showcase", url: "https://streamable.com/d0oyym", icon: "🌍" }
+        { text: "Showcase", url: "https://streamable.com/qrpa99", icon: "🌍" }
       ]
     },
   ],
